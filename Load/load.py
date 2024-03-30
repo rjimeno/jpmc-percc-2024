@@ -48,9 +48,13 @@ class MovieStoreLoader:
             1: {'title': 'After Dark in Central Park', 'year': 1900, 'cast': [], 'genres': [], 'href': None}
             2: ...
             """
+            dynamodbclient=boto3.resource('dynamodb', region_name='us-east-1')
+            movies_table = dynamodbclient.Table('movies')
+            #instance_id and cluster_id is the Key in dynamodb table
             counter = 0
             for record in self.records:
                 counter += 1
+                response=movies_table.put_item(Item=record)
                 print(f'{counter}: {record}')
 
 
