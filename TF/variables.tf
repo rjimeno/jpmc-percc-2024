@@ -4,9 +4,9 @@
 
 variable "region" {
   description = "The region Terraform deploys your instance"
-  type    = string
+  type        = string
   nullable    = false
-  default = "us-east-1"
+  default     = "us-east-1"
 }
 
 #variable "profile_name" {

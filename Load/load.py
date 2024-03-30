@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import boto3
 import json
 
 FILES_DIRECTORY = '../wikipedia-movie-data/' #'/Users/rjimeno/JPMC/jpmc-percc-2024/wikipedia-movie-data/'

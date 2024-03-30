@@ -32,3 +32,7 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+$ SSH keys:
+jpmc_010_sshkey
+jpmc_010_sshkey.pub
