@@ -26,14 +26,3 @@ resource "aws_iam_instance_profile" "ddb_profile" {
   name = "ddb_profile"
   role = aws_iam_role.ddb_role.name
 }
-
-resource "aws_instance" "ddb_instance" {
-  ami           = "ami-06ca3ca175f37dd66"
-  instance_type = "t2.micro"
-
-  iam_instance_profile = aws_iam_instance_profile.ddb_profile.name
-
-  tags = {
-    Name = "exampleinstance"
-  }
-}

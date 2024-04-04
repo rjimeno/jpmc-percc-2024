@@ -21,3 +21,13 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = module.eks.cluster_name
 }
+
+output "registry_id" {
+  description = "The account ID of the registry holding the repository."
+  value       = aws_ecr_repository.jpmc_ecr.registry_id
+}
+
+output "repository_url" {
+  description = "The URL of the repository."
+  value       = aws_ecr_repository.jpmc_ecr.repository_url
+}
