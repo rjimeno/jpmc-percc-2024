@@ -7,4 +7,4 @@ role at JPMC.
 - README.md _This file_.
 - Doc/ _Documentation_.
 - Load/ _Load JSON files extracted from Wikipedi_.
-- wikipedia-movie-data/ _Source data set_.
+- wikipedia-movie-data/ _Source data set_. (clone with `--recursive`)
