@@ -13,7 +13,7 @@ CLUSTER_NAME=$(terraform output -raw cluster_name)
 Create the Docker image:
 ```
 # Clone the repository, cd into API/ and build the Docker image.
-cd ../API/
+pushd ../API/
 IMAGE_NAME=myimage # Maybe '590184000874.dkr.ecr.us-east-1.amazonaws.com/jpmc-ecr:latest' instead.
 docker build -t $IMAGE_NAME .
 ```
