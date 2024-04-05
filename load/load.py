@@ -7,7 +7,6 @@ FILES_DIRECTORY = '../wikipedia-movie-data/' #'/Users/rjimeno/JPMC/jpmc-percc-20
 FILES = (
      'movies-1900s.json',
      'movies-1910s.json',
-     'movies-1910s.json',
      'movies-1920s.json',
      'movies-1930s.json',
      'movies-1940s.json',
