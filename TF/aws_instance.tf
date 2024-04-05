@@ -17,7 +17,7 @@ usermod -a -G docker ec2-user # so `ec2-user` can execute Docker commands withou
 yum install git -y
 # Now clone or fetch the source, `cd` into it and build the docker image.
 git clone --recursive https://github.com/rjimeno/jpmc-percc-2024.git
-pushd jpmc-percc-2024/Load/
+pushd jpmc-percc-2024/load/
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
