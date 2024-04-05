@@ -69,8 +69,8 @@ class MovieStoreLoader:
         counter = 0
         for record in self.records:
             counter += 1
-            _ = movies_table.put_item(Item=record)  # Ignoring retun value for simplicity.
-            print(f'{counter}: {record}')
+            _ = movies_table.put_item(Item=record)  # Ignoring return value for simplicity.
+            # print(f'{counter}: {record}')
 
 
 if __name__ == '__main__':
@@ -78,5 +78,5 @@ if __name__ == '__main__':
     # import doctest
     # doctest.testmod()
     msl = MovieStoreLoader()
-    msl.load_json_file(FILES)
+    msl.load_json_file(*FILES)
     msl.save_in_db('movies')
