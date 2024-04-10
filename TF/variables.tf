@@ -9,7 +9,16 @@ variable "region" {
   default     = "us-east-1"
 }
 
-#variable "profile_name" {
-#  type    = string
-#  default = "ACG-sandbox"
-#}
+variable "read_capacity" {
+  description = "Placeholder for DDB read capacity (tables and indexes."
+  type        = number
+  nullable    = false
+  default     = 50
+}
+
+variable "write_capacity" {
+  description = "Placeholder for DDB write capacity (tables and indexes."
+  type        = number
+  nullable    = false
+  default     = 50
+}

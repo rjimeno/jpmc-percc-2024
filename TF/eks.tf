@@ -1,4 +1,4 @@
-# Beware: This has worked in us-east-1 while failed in us-east-2.
+# # Beware: This has worked in us-east-1 while failed in us-east-2.
 
 # Filter out local zones, which are not currently supported
 # with managed node groups
