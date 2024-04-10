@@ -51,7 +51,10 @@ kubectl create service loadbalancer fast-api --tcp=80:80
 Only after creating the service you should create the deployment:
 ```
 kubectl create deployment fast-api --image=$REPOSITORY --replicas=3
+```
+
 # May be useful for testing, but should not be needed:
+```
 kubectl port-forward <the_name_of_a_pod> 8080:80
 # To list the pods: `kubectl get pods`
 ```
@@ -60,7 +63,7 @@ kubectl port-forward <the_name_of_a_pod> 8080:80
 ```
 DNS_NAME=$(kubectl get service | grep ^fast-api | awk '{ print $4 }')
 curl $DNS_NAME
-
+```
 
 ## REFERENCES:
 

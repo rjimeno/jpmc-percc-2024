@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+from random import randrange
 import boto3
 import json
+import sys
 
 FILES_DIRECTORY = '../wikipedia-movie-data/' #'/Users/rjimeno/JPMC/jpmc-percc-2024/wikipedia-movie-data/'
 FILES = (
@@ -21,7 +23,7 @@ FILES = (
      )
 
 class MovieStoreLoader:
-
+    counter = 0
     records = []
 
     def __init__(self):
@@ -51,10 +53,12 @@ class MovieStoreLoader:
                 print(f'File: {file_path}.')
                 self.records = json.load(input_file)
             size = len(self.records)
-            print(f'Loaded {size} records.')
+            print(f'Loaded {size} records on memory.')
 
     def save_in_db(self, table_name):
         """
+        This function should be improved to enhance indexing and reduce
+        duplication. We are starting with a very simple approach.
         >>> msl = MovieStoreLoader()
         >>> msl.load_json_file('movies-1900s.json') # doctest: +ELLIPSIS
         Number ...
@@ -63,19 +67,19 @@ class MovieStoreLoader:
         2: ...
         """
         dynamodbclient=boto3.resource('dynamodb', region_name='us-east-1')
-        movies_table = dynamodbclient.Table('movies')
-        #instance_id and cluster_id is the Key in dynamodb table
-        counter = 0
+        movies_table = dynamodbclient.Table(table_name)
         for record in self.records:
-            counter += 1
+            self.counter += 1
+            record['id'] = randrange(0, 1_000_000_000_000)
+            # print(f'{self.counter}: {record}') # Maybe comment-out for debugging.
             _ = movies_table.put_item(Item=record)  # Ignoring return value for simplicity.
-            # print(f'{counter}: {record}')
-
+        print(f"Stored {self.counter} memory records persistently.")
 
 if __name__ == '__main__':
     # Disable unit tests until I can create good ones.
     # import doctest
     # doctest.testmod()
-    msl = MovieStoreLoader()
-    msl.load_json_file(*FILES)
-    msl.save_in_db('movies')
+    for f in FILES:
+        msl = MovieStoreLoader()
+        msl.load_json_file(f)
+        msl.save_in_db('movies')

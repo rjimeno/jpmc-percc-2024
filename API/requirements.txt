@@ -1,0 +1,3 @@
+boto3~=1.34
+fastapi~=0.79
+uvicorn~=0.18
